@@ -1,0 +1,8 @@
+[package]
+name = "gif-generator"
+version = "0.1.0"
+authors = ["Eli H <elih@protonmail.com>"]
+
+[dependencies]
+gif = "0.9.2"
+rand = "0.3.14"
