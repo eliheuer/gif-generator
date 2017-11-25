@@ -18,11 +18,11 @@ fn main() {
     // Menu loop:
     loop {
         println!("Please input an image size:");
-        let mut img_size_test = String::new();
-        io::stdin().read_line(&mut img_size_test)
-            .expect("Failed to read line");
+        // let mut img_size_test = String::new();
+        // io::stdin().read_line(&mut img_size_test)
+        //     .expect("Failed to read line");
         // let my_int: u16 = img_size_test.parse().unwrap();
-        println!("img_size_test{}",img_size_test);
+        // println!("img_size_test{}",img_size_test);
         break;
     }
 
@@ -46,6 +46,27 @@ fn output_gif(img_size: u16) {
         0, 0, 0, 0, 0, 0, 1, 0,
         0, 0, 0, 0, 0, 0, 0, 1,
     ];
+ 
+    // Static array://///////////////////////////////////////////////
+    let eli: [u8; 256] = [
+        3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+        3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3,
+        3, 3, 3, 3, 4, 4, 5, 5, 5, 5, 4, 3, 3, 3, 3, 3,
+        3, 3, 3, 3, 4, 4, 5, 5, 5, 5, 4, 4, 4, 3, 3, 3,
+        3, 3, 3, 3, 4, 5, 5, 5, 5, 5, 5, 4, 4, 3, 3, 3,
+        3, 3, 3, 3, 4, 5, 5, 5, 5, 5, 5, 4, 4, 3, 3, 3,
+        3, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 4, 3, 3, 3, 3,
+        3, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 4, 3, 3, 3, 3,
+        3, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 4, 3, 3, 3, 3,
+        3, 3, 3, 3, 1, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3,
+        3, 3, 3, 3, 1, 5, 5, 5, 5, 5, 5, 3, 3, 3, 3, 3,
+        3, 3, 3, 3, 1, 1, 5, 5, 5, 5, 4, 3, 3, 3, 3, 3,
+        1, 1, 1, 1, 1, 1, 5, 5, 5, 5, 3, 3, 3, 3, 3, 3,
+        1, 1, 1, 1, 2, 2, 5, 5, 5, 5, 2, 2, 3, 3, 3, 3,
+        1, 1, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3,
+        1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3,
+    ];
+
 
     // Initialize random array://////////////////////////////////////
     let mut rand_col: [u8; 256];
@@ -117,7 +138,7 @@ fn output_gif(img_size: u16) {
     
     // Make output file
     let (width, height) = (img_size, img_size);
-    let gif_states = [ary_a, ary_b, rand_col];
+    let gif_states = [eli, eli, rand_col];
     let mut image = File::create("target/output.gif").unwrap();
     let mut encoder = 
         Encoder::new(&mut image, width, height, col_map).unwrap();
